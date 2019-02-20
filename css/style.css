@@ -1,17 +1,30 @@
 /* Style.css */
 
 body{
-    background-image: url("https://braziljournal.s3.amazonaws.com/covers/c7ca960f-87f8-0002-0003-9fd33b8cf00b.jpg?v=1533296530");
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background: #000;
+}
+#loginform{
+    padding: 10px;     
+}
+#carticon{
+    color: white;
+    size: 20px;
 }
 nav{
-    background-color:rgba(0,0,0,0.5);
+    position: fixed;
 }
 
-
-
-
+#carousel{
+    margin-top: 35px;
+    width: 100%;
+    padding: 20px;
+}
+.item{
+    height: 600px;
+} 
+.item img{
+    height: 600px;
+}
 
 
 
