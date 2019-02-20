@@ -16,7 +16,7 @@
 
 <body>
 
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -31,32 +31,35 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li class="active"><a href="">Home</a></li>
+                  <li class="active"><a href="">Home</a></li>
 
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span class="caret"></span></a>
-                        
-                        <ul class="dropdown-menu dropdown-menu-left">
-                            <li><a href="">Veg Pizza</a></li>
-                            <li><a href="">Nonveg Pizza</a></li>
-                            <li><a href="">Side Orders</a></li>
-                        </ul>                        
-                    </li>
-                    
-                    <li class="dropdown">
-                      <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">About Us <span class="caret"></span></a>
+                <li class="dropdown nav-item">
+                      <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span class="caret"></span></a>
                       
                       <ul class="dropdown-menu dropdown-menu-left">
-                          <li><a href="">Our Team</a></li>
-                          <li><a href="">Feedback</a></li>
-                          <li><a href="">Contact Us</a></li>
+                          <li><a href="">Veg Pizza</a></li>
+                          <li><a href="">Nonveg Pizza</a></li>
+                          <li><a href="">Side Orders</a></li>
                       </ul>                        
+                  </li>
+                  
+                  <li class="dropdown nav-item">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">About Us <span class="caret"></span></a>
+                    
+                    <ul class="dropdown-menu dropdown-menu-left">
+                        <li><a href="">Our Team</a></li>
+                        <li><a href="">Feedback</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>                        
+                  </li>
+                  <li class="nav-item" id="carticon">
+                      <a href="#" class="glyphicon glyphicon-shopping-cart"></a>
                   </li>
                   <li class="dropdown">
                       <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Login <span class="caret"></span></a>
                       <div class="dropdown-menu dropdown-menu-left">
-                          <form class="px-4 py-3">
-                            <div class="form-group">
+                          <form class="px-4 py-3" id="loginform">
+                            <div class="form-group" >
                               <label for="exampleDropdownFormEmail1">Email address</label>
                               <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
                             </div>
@@ -83,6 +86,59 @@
             </div>
         </div>
     </nav>
+    <br>
+    <div class="container col-12" id="carousel">
+        
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            
+            <!-- indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            
+            <!-- wrapper for the slides -->
+            <div class="carousel-inner" role="listbox">
+                
+                <div class="item active">
+                    <img src="http://www.thengakola.in/wp-content/uploads/2019/02/Pizza3.jpg" alt="cute kitten">
+                    <div class="carousel-caption">
+                        <h4>Welcome to the carousel!</h4>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://eatdrinklocal.org/wp-content/uploads/2017/06/new_product_image_1498773329_0.jpeg" alt="cute kitten">
+                    <div class="carousel-caption">
+                        <h4>And another slide...</h4>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://www.slicktext.com/blog/wp-content/uploads/2015/02/food-pizza-1.jpg" alt="cute kitten">
+                    <div class="carousel-caption">
+                        <h4>The final slide :)</h4>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            
+        </div>
+        
+    </div> 
+
     
     <script src="js/jquery-2.1.4.js"></script>
     <script src="js/script.js"></script>
