@@ -1,0 +1,35 @@
+/* Style.css */
+
+body {
+  background: #f8f8f8;
+}
+#loginform {
+  margin-top: 70px;
+  padding: 10px;
+}
+#carticon {
+  color: white;
+  size: 20px;
+}
+nav {
+  position: fixed;
+  background-color: #08f;
+}
+nav a {
+  color: white;
+}
+
+#carousel {
+  margin-top: 35px;
+  padding: 10px;
+}
+.item {
+  height: 600px;
+}
+.item img {
+  height: 600px;
+}
+.carousel-caption {
+  color: black;
+  font-weight: 800;
+}
