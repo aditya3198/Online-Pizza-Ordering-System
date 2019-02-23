@@ -19,8 +19,12 @@ nav a {
   color: white;
 }
 #accordion{
-  margin-top: 80px;
-  margin-left: 50px;
+  margin: 80px 100px 0px 100px;
+}
+#accordion h2{
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
 }
 #carousel {
   margin-top: 35px;
