@@ -1,15 +1,4 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
-var productSchema = new Schema({
-  name: String,
-  sku: String,
-  description: String,
-  imageUrl: String,
-  category: String
-});
-
-var productsModel = mongoose.model("Product", productSchema);
+var productsModel = require("./schemas/product");
 
 class Product {
   constructor(
