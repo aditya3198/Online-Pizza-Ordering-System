@@ -8,9 +8,13 @@ var app = require("../app");
 var debug = require("debug")("pizzaero:server");
 var http = require("http");
 var mongoose = require("mongoose");
+var createError = require("http-errors");
 
-mongoose.connect("mongodb://localhost:27017/pizzaero", {
+mongoose.connect("mongodb://68.183.93.39:27017/pizzaero", {
   useNewUrlParser: true
+});
+mongoose.connection.on("error", err => {
+  createError(404);
 });
 /**
  * Get port from environment and store in Express.
