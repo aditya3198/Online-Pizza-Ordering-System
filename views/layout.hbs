@@ -2,87 +2,79 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{{title}}</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css'>
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <link href="/stylesheets/jquery-ui.min.css">
+
+  <script src="/javascripts/jquery-2.1.4.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
-  <!DOCTYPE html>
-  <html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{{title}}</title>
-
-    <!-- Bootstrap -->
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
-
-    <!-- Jquery UI -->
-    <link href="/stylesheets/jquery-ui.min.css" </head> <body>
-    <nav class="navbar navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Pizzaero</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-
-            <li class="active"><a href="">Home</a></li>
-
-            <li class="dropdown nav-item">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span
-                  class="caret"></span></a>
-
-              <ul class="dropdown-menu dropdown-menu-left">
-                <li><a href="">Veg Pizza</a></li>
-                <li><a href="">Nonveg Pizza</a></li>
-                <li><a href="">Side Orders</a></li>
-              </ul>
-            </li>
-
-            <li class="dropdown nav-item">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">About Us <span
-                  class="caret"></span></a>
-
-              <ul class="dropdown-menu dropdown-menu-left">
-                <li><a href="">Our Team</a></li>
-                <li><a href="">Feedback</a></li>
-                <li><a href="">Contact Us</a></li>
-              </ul>
-            </li>
-            {{#if loggedIn}}
-            <li class="nav-item" id="carticon">
-              <a href="#" class="glyphicon glyphicon-shopping-cart"></a>
-            </li>
-            <li class="nav-item" id="carticon">
-              <a href="#" class="glyphicon glyphicon-user"></a>
-            </li>
-            {{/if}}
-          </ul>
-        </div>
+  <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Pizzaero</a>
       </div>
-    </nav>
-    <br>
-    {{{body}}}
-    <script src="/javascripts/jquery-2.1.4.js"></script>
-    <script src="/javascripts/script.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/javascripts/jquery-ui.min.js"></script>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li class="active"><a href="">Home</a></li>
+
+          <li class="dropdown nav-item">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span class="caret"></span></a>
+
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="">Veg Pizza</a></li>
+              <li><a href="">Nonveg Pizza</a></li>
+              <li><a href="">Side Orders</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown nav-item">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">About Us <span
+                class="caret"></span></a>
+
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="">Our Team</a></li>
+              <li><a href="">Feedback</a></li>
+              <li><a href="">Contact Us</a></li>
+            </ul>
+          </li>
+          {{#if loggedIn}}
+          <li class="nav-item" id="carticon">
+            <a href="#" class="glyphicon glyphicon-shopping-cart"></a>
+          </li>
+          <li class="nav-item" id="carticon">
+            <a href="#" class="glyphicon glyphicon-user"></a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  {{{body}}}
+
+  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>
