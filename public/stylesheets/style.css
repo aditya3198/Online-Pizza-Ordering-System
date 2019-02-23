@@ -26,6 +26,11 @@ nav a {
   font-weight: 500;
   font-size: 18px;
 }
+#delete{
+  position: relative;
+  float: right;
+  margin-right: 100px;
+}
 #carousel {
   margin-top: 35px;
   padding: 10px;
