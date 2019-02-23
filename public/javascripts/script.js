@@ -1,5 +1,4 @@
 // script.js
-
 $(document).ready(function () {
 
   $('.dropdown').hover(function () {
@@ -11,14 +10,18 @@ $(document).ready(function () {
     active: false,
     collapsible: true
   });
-
 });
 
-
-
-
-
-
-
-
+function check() {
+  if (
+    document.getElementById("password").value ==
+    document.getElementById("confirm_password").value
+  ) {
+    document.getElementById("message").style.color = "green";
+    document.getElementById("message").innerHTML = "matching";
+  } else {
+    document.getElementById("message").style.color = "red";
+    document.getElementById("message").innerHTML = "not matching";
+  }
+}
 
