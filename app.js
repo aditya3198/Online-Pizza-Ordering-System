@@ -6,7 +6,7 @@ var logger = require("morgan");
 var session = require("express-session");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var userRouter = require("./routes/user");
 var adminRouter = require("./routes/admin");
 var app = express();
 
@@ -28,8 +28,8 @@ app.use(
 );
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/admin", adminRouter);
+app.use("/user", isAuthenticated, userRouter);
+app.use("/admin", isAuthenticated, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,4 +47,19 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
+//logged-in middleware
+function isAuthenticated(req, res, next) {
+  // do any checks you want to in here
+
+  // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
+  // you can do this however you want with whatever variables you set up
+  if (req.session.user ? 1 : 0) return next();
+
+  // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+  res.redirect("/");
+}
+
+// function isAdmin(req, res, next){
+//   if(req.user)
+// }
 module.exports = app;

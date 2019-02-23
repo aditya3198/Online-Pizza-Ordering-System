@@ -4,7 +4,8 @@ var User = require("../models/User");
 /* GET home page. */
 router.get("/", function(req, res, next) {
   // res.render("index", { title: "Express", layout: "layout" });
-  var loggedIn = req.session.userId ? 1 : 0;
+  var loggedIn = req.session.user ? 1 : 0;
+  console.log(req.session.hasOwnProperty("user"));
   res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
 });
 
@@ -55,7 +56,7 @@ router.post("/login", async function(req, res) {
     });
   } else {
     console.log("Successfull login");
-    req.session.userId = user._id;
+    req.session.user = user;
     res.redirect("/");
   }
 });
