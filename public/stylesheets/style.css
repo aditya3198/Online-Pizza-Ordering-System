@@ -18,7 +18,10 @@ nav {
 nav a {
   color: white;
 }
-
+#accordion{
+  margin-top: 80px;
+  margin-left: 50px;
+}
 #carousel {
   margin-top: 35px;
   padding: 10px;
