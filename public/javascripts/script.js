@@ -10,6 +10,8 @@ $(document).ready(function () {
     active: false,
     collapsible: true
   });
+
+  $('#selectable').selectable();
 });
 
 function check() {
