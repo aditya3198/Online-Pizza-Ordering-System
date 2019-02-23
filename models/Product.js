@@ -1,30 +1,18 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
-var productSchema = new Schema({
-  name: String,
-  sku: String,
-  description: String,
-  imageUrl: String,
-  category: String,
-  created_at: Date,
-  updated_at: Date
-});
-
-var productsModel = mongoose.model("Product", productSchema);
+var productsModel = require("./schemas/product");
 
 class Product {
-  //   var name;
-  //   var sku;
-  //   var description;
-  //   var imageUrl;
-  //   var category;
-  constructor() {
-    this.name = "";
-    this.sku = "";
-    this.description = "";
-    this.imageUrl = "";
-    this.category = "";
+  constructor(
+    name = "",
+    sku = "",
+    description = "",
+    imageUrl = "",
+    category = ""
+  ) {
+    this.name = name;
+    this.sku = sku;
+    this.description = description;
+    this.imageUrl = imageUrl;
+    this.category = category;
   }
   insertInDb() {
     var p = new productsModel({
@@ -38,7 +26,7 @@ class Product {
       if (err) {
         throw err;
       }
-      //   console.log("User successfully saved.");
+      console.log("Product successfully saved.");
     });
   }
 

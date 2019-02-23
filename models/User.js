@@ -1,23 +1,4 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
-var userSchema = new Schema({
-  // name: String,
-  email: { type: String, required: true, unique: true },
-  // username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  phoneno: String,
-  // admin: Boolean,
-  // location: String,
-  // meta: {
-  // age: Number,
-  // website: String
-  // },
-  created_at: Date,
-  updated_at: Date
-});
-
-var userModel = mongoose.model("User", userSchema);
+var userModel = require("./schemas/user");
 
 class User {
   // var email;
@@ -26,7 +7,7 @@ class User {
   // var address;
   // var phoneno;
 
-  constructor(email, password, phoneno) {
+  constructor(email = "", password = "", phoneno = "") {
     this.email = email;
     this.password = password;
     this.phoneno = phoneno;
@@ -71,13 +52,11 @@ class User {
   }
   checkDuplicate() {
     var email = this.email;
-    var phoneno = this.phoneno;
 
     return new Promise(function(resolve, reject) {
       userModel.find(
         {
-          email: email,
-          phoneno: phoneno
+          email: email
         },
         function(err, users) {
           if (users.length !== 0) {

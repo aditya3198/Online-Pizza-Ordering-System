@@ -1,17 +1,7 @@
-{{!-- <h1>{{title}}</h1> --}}
-{{!-- {{#if error}} --}}
-{{!-- <div style="background-color: red">{{error}}</div> --}}
-{{!-- {{/if}} --}}
-{{!-- <form action="/register" method="POST">
-    <input type="email" name="email" placeholder="yashlotan7@gmail.com" />
-    <input type="password" name="password" placeholder="testpassword" />
-    <input type="text" name="phoneno" placeholder="8954952132" />
-    <input type="Submit" name="submit" value="Submit" />        
-</form> --}}
 <header class="w3-container w3-teal" id="reg">
     <h1>Register</h1>
 </header>
-<form class="px-4 py-3" class="form-horizontal" id="regestrationform">
+<form class="px-4 py-3" class="form-horizontal" id="regestrationform" method="post">
     {{!-- <div class="form-group" class="form-horizontal">
         <label for="name" class="control-label">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Abhi Roy" required />
@@ -22,7 +12,7 @@
     </div>
     <div class="form-group" class="form-horizontal">
         <label for="email" class="control-label">Email address</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="email@example.com" required />
+        <input type="email" name="email" class="form-control" id="email" placeholder="email@example.com" required>
     </div>
     <div class="form-group" class="form-horizontal">
         <label for="password" class="control-label">Password</label>
@@ -37,3 +27,14 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
+{{#if error}}
+<div id="dialog-message" title="Duplicate User">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+        Email entered already exists.
+    </p>
+    <p>
+        Please try again using <b>another email</b>.
+    </p>
+</div>
+{{/if}}
