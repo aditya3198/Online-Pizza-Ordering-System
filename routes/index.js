@@ -4,7 +4,7 @@ var User = require("../models/User");
 /* GET home page. */
 router.get("/", function(req, res, next) {
   // res.render("index", { title: "Express", layout: "layout" });
-  var loggedIn = req.session.user ? 1 : 0;
+  var loggedIn = req.session.hasOwnProperty("user");
   console.log(req.session.hasOwnProperty("user"));
   res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
 });

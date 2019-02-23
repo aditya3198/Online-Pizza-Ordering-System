@@ -8,7 +8,6 @@ router.get("/", function(req, res, next) {
     title: "Profile",
     user: req.session.user
   });
-  res.send("respond with a resource");
 });
 
 module.exports = router;
