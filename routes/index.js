@@ -8,6 +8,11 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
 });
 
+router.get("/profile", function(req, res, next){
+  var loggedIn = req.session.hasOwnProperty("user");
+  res.render("profile", { title: "Profile", loggedIn: loggedIn });
+});
+
 router.get("/register", function(req, res, next) {
   res.render("register", { title: "Register" });
 });
