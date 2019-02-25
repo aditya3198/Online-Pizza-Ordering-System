@@ -3,12 +3,18 @@ var router = express.Router();
 var User = require("../models/User");
 var Customer = require("../models/Customer");
 var Admin = require("../models/Admin");
+var Product = require("../models/Product");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
   // res.render("index", { title: "Express", layout: "layout" });
+  var message = req.query.hasOwnProperty("message") ? req.query.message : null;
   var loggedIn = req.session.hasOwnProperty("user");
-  res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
+  res.render("index", {
+    title: "Pizzaero",
+    loggedIn: loggedIn,
+    message: message
+  });
 });
 
 // router.get("/profile", function(req, res, next) {
@@ -128,6 +134,33 @@ router.get("/logout", function(req, res, next) {
       }
     });
   }
+});
+router.get("/menu", async function(req, res, next) {
+  var loggedIn = req.session.hasOwnProperty("user");
+  var message = req.query.hasOwnProperty("message") ? req.query.message : null;
+
+  var products = new Product();
+  products = await products.findAll();
+  res.render("menu", {
+    products: products,
+    loggedIn: loggedIn,
+    message: message
+  });
+});
+router.post("/placeorder", async function(req, res, next) {
+  var skus = req.body.skus;
+  var user = req.session.user;
+  if (
+    user.phoneno == "" ||
+    user.name == "" ||
+    user.email == "" ||
+    user.address == ""
+  )
+    res.redirect(
+      "/menu?message=" + "Please complete your profile before placing an order"
+    );
+  await user.placeOrder(skus);
+  res.redirect("/?message=" + "Order Placed Successfully");
 });
 // router.get("/allusers", async function(req, res, next) {
 //   var user = new User();
