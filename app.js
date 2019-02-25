@@ -29,7 +29,7 @@ app.use(
 
 app.use("/", indexRouter);
 app.use("/user", isAuthenticated, userRouter);
-app.use("/admin", isAuthenticated, adminRouter);
+app.use("/admin", isAuthenticated, isAdmin, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -54,6 +54,16 @@ function isAuthenticated(req, res, next) {
   // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
   // you can do this however you want with whatever variables you set up
   if (req.session.hasOwnProperty("user")) return next();
+
+  // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+  res.redirect("/");
+}
+function isAdmin(req, res, next) {
+  // do any checks you want to in here
+
+  // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
+  // you can do this however you want with whatever variables you set up
+  if (req.session.user.hasOwnProperty("isAdmin")) return next();
 
   // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
   res.redirect("/");
