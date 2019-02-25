@@ -14,5 +14,15 @@ class Order {
       });
     });
   }
+  findAll() {
+    return new Promise((resolve, reject) => {
+      orderModel.find({}, (err, orders) => {
+        if (err) {
+          throw err;
+        }
+        resolve(orders);
+      });
+    });
+  }
 }
 module.exports = Order;

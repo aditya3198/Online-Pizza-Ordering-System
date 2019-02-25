@@ -86,7 +86,6 @@ class Customer extends User {
       });
     });
   }
-  update() {}
   placeOrder(items) {}
   getOrder(item) {}
 }

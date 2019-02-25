@@ -1,17 +1,21 @@
 var express = require("express");
 var router = express.Router();
 var Product = require("../models/Product");
+var Order = require("../models/Order");
 
 /* GET users listing. */
 router.get("/", async function(req, res, next) {
   var message = req.query.hasOwnProperty("message") ? req.query.message : null;
   var product = new Product();
   var products = await product.findAll();
+  var order = new Order();
+  var orders = await order.findAll();
 
   res.render("admin", {
     title: "Admin",
     message: message,
-    products: products
+    products: products,
+    orders: orders
   });
 });
 
