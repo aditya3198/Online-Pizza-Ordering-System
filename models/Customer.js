@@ -75,6 +75,18 @@ class Customer extends User {
       );
     });
   }
+  findCustomerByEmail() {
+    var email = this.email;
+    return new Promise((resolve, reject) => {
+      customerModel.findOne({ email: email }, (err, customer) => {
+        if (err) {
+          throw err;
+        }
+        resolve(customer);
+      });
+    });
+  }
+  update() {}
   placeOrder(items) {}
   getOrder(item) {}
 }

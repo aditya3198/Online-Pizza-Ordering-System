@@ -1,25 +1,22 @@
 <header class="w3-container w3-teal" id="reg">
-    <h1>Profile</h1>
+  <h1>Profile</h1>
 </header>
 <div class="well">
-    <div id="myTabContent" class="tab-content">
-      <div class="tab-pane active in" id="home">
-        <form class="px-4 py-3" class="form-horizontal">
-            <label>Name</label>
-            <input type="text" class="input-xlarge" id="user.name"/>
-            <label>Email</label>
-            <input type="text" value="user.email" class="input-xlarge" id="user.email"/>
-            <label>Phone number</label>
-            <input type="number" value="user.phoneno" class="input-xlarge" id="user.phoneno"/>
-            <label>Address</label>
-            <textarea value="user.address" rows="3" class="input-xlarge" id="user.address">
-            </textarea>
-          	<div>
-        	    <button class="btn btn-primary">Update</button>
-        	</div>
-        </form>
-      </div>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane active in" id="home">
+      <form class="px-4 py-3" method="POST" class="form-horizontal">
+        <label>Name</label>
+        <input type="text" name="name" value="{{user.name}}" class="input-xlarge" id="user.name" />
+        <label>Email</label>
+        <input type="text" name="email" value="{{user.email}}" class="input-xlarge" id="user.email" />
+        <label>Phone number</label>
+        <input type="number" name="phoneno" value="{{user.phoneno}}" class="input-xlarge" id="user.phoneno" />
+        <label>Address</label>
+        <textarea name="address" rows="3" class="input-xlarge" id="user.address">{{user.address}}</textarea>
+        <div>
+          <button class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-
-

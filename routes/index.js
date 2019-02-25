@@ -11,14 +11,14 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
 });
 
-router.get("/profile", function(req, res, next) {
-  var loggedIn = req.session.hasOwnProperty("user");
-  res.render("profile", {
-    title: "Profile",
-    loggedIn: loggedIn,
-    user: req.session.user
-  });
-});
+// router.get("/profile", function(req, res, next) {
+//   var loggedIn = req.session.hasOwnProperty("user");
+//   res.render("profile", {
+//     title: "Profile",
+//     loggedIn: loggedIn,
+//     user: req.session.user
+//   });
+// });
 
 router.get("/register", function(req, res, next) {
   res.render("register", { title: "Register" });
@@ -93,7 +93,7 @@ router.post("/login", async function(req, res) {
     } else {
       // console.log("Successfull login");
       req.session.user = admin;
-      res.redirect("/");
+      res.redirect("/admin/");
     }
   } else {
     var customerMod = new Customer(email, password, phoneno);
@@ -112,7 +112,7 @@ router.post("/login", async function(req, res) {
     } else {
       // console.log("Successfull login");
       req.session.user = customer;
-      res.redirect("/");
+      res.redirect("/user/");
     }
   }
 });
