@@ -23,6 +23,8 @@ router.post("/", async function(req, res, next) {
   customer.phoneno = phoneno ? phoneno : customer.phoneno;
   customer.address = address ? address : customer.address;
   await customer.save();
+
+  res.redirect("/user/");
 });
 
 module.exports = router;
