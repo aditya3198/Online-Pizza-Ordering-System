@@ -22,22 +22,22 @@ router.post("/additem", function(req, res, next) {
   var imageUrl = req.body.image_url;
   var description = req.body.description;
 
+  var admin = new Admin();
   //Save product to database
-  var product = new Product(name, sku, description, imageUrl, category);
-  product.insertInDb();
+  // var product = new Product(name, sku, description, imageUrl, category);
+  // product.insertInDb();
 
-  var message = "Item Added Successfully";
+  var message = admin.addItem(category, sku, name, imageUrl, description);
   res.redirect("/admin/?message=" + message);
 });
 
 router.post("/deleteitem", function(req, res, next) {
   var sku = req.body.sku;
 
+  var admin = new Admin();
   //Delete product from database
-  var product = new Product("", sku, "", "", "");
-  product.delete("sku", sku);
 
-  var message = "Item Deleted Successfully";
+  var message = admin.deleteItem(sku);
   res.redirect("/admin/?message=" + message);
 });
 module.exports = router;

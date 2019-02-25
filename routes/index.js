@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../models/User");
+var Customer = require("../models/Customer");
+var Admin = require("../models/Admin");
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
   // res.render("index", { title: "Express", layout: "layout" });
@@ -8,9 +11,13 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Pizzaero", loggedIn: loggedIn });
 });
 
-router.get("/profile", function(req, res, next){
+router.get("/profile", function(req, res, next) {
   var loggedIn = req.session.hasOwnProperty("user");
-  res.render("profile", { title: "Profile", loggedIn: loggedIn });
+  res.render("profile", {
+    title: "Profile",
+    loggedIn: loggedIn,
+    user: req.session.user
+  });
 });
 
 router.get("/register", function(req, res, next) {
@@ -22,16 +29,39 @@ router.post("/register", async function(req, res, next) {
   var password = req.body.password;
   var phoneno = req.body.phoneno;
 
-  var user = new User(email, password, phoneno);
+  var customer = new Customer(email, password, phoneno);
   //check if user already exists
-  var isDuplicate = await user.checkDuplicate();
+  var isDuplicate = await customer.checkDuplicate();
   if (isDuplicate) {
     //Duplicate User, redirect back to registration page
     res.render("register", { title: "Register", error: "Duplicate User" });
     // res.redirect("/register?error=" + "Duplicate User");
   } else {
     //User not duplicate so enter user details in database
-    user.insertInDb();
+    customer.insertInDb();
+
+    res.redirect("/");
+  }
+});
+router.get("/adminregister", function(req, res, next) {
+  res.render("register", { title: "Register" });
+});
+router.post("/adminregister", async function(req, res, next) {
+  var email = req.body.email;
+  var password = req.body.password;
+  var phoneno = req.body.phoneno;
+
+  var admin = new Admin(email, password, phoneno);
+  //check if user already exists
+  var isDuplicate = await admin.checkDuplicate();
+  if (isDuplicate) {
+    //Duplicate User, redirect back to registration page
+    res.render("register", { title: "Register", error: "Duplicate User" });
+    // res.redirect("/register?error=" + "Duplicate User");
+  } else {
+    //User not duplicate so enter user details in database
+    admin.insertInDb();
+
     res.redirect("/");
   }
 });
@@ -44,24 +74,46 @@ router.post("/login", async function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
   var phoneno = req.body.phoneno;
+  var isAdmin = req.body.admin;
 
-  var userMod = new User(email, password, phoneno);
-  var user = await userMod.findUser();
-  if (user == null) {
-    // res.render("login", {
-    //   title: "Login",
-    //   error: "Wrong Credentials"
-    // });
-    console.log("wrong credentials");
-    res.render("index", {
-      title: "Pizzaero",
-      loggedIn: 0,
-      error: "Wrong Credentials"
-    });
+  if (isAdmin == "on") {
+    var adminMod = new Admin(email, password, phoneno);
+    var admin = await adminMod.findUser();
+    if (admin == null) {
+      // res.render("login", {
+      //   title: "Login",
+      //   error: "Wrong Credentials"
+      // });
+      // console.log("wrong credentials");
+      res.render("index", {
+        title: "Pizzaero",
+        loggedIn: 0,
+        error: "Wrong Credentials"
+      });
+    } else {
+      // console.log("Successfull login");
+      req.session.user = admin;
+      res.redirect("/");
+    }
   } else {
-    console.log("Successfull login");
-    req.session.user = user;
-    res.redirect("/");
+    var customerMod = new Customer(email, password, phoneno);
+    var customer = await customerMod.findUser();
+    if (customer == null) {
+      // res.render("login", {
+      //   title: "Login",
+      //   error: "Wrong Credentials"
+      // });
+      // console.log("wrong credentials");
+      res.render("index", {
+        title: "Pizzaero",
+        loggedIn: 0,
+        error: "Wrong Credentials"
+      });
+    } else {
+      // console.log("Successfull login");
+      req.session.user = customer;
+      res.redirect("/");
+    }
   }
 });
 
