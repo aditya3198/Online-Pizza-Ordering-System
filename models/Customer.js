@@ -1,6 +1,6 @@
 var User = require("./User");
 var customerModel = require("./schemas/customer");
-var orderModel = require("./Order");
+var Order = require("./Order");
 
 class Customer extends User {
   constructor(
@@ -86,7 +86,15 @@ class Customer extends User {
       });
     });
   }
-  placeOrder(items) {}
+  async placeOrder(items) {
+    var cust = await this.findCustomerByEmail();
+    var order = new Order(cust._id);
+    await order.addProducts(items);
+    await order.addOrder();
+    return new Promise((resolve, reject) => {
+      resolve("Order placed successfully");
+    });
+  }
   getOrder(item) {}
 }
 

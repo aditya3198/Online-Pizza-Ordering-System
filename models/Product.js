@@ -40,7 +40,16 @@ class Product {
       });
     });
   }
-
+  findBySku(value) {
+    return new Promise((resolve, reject) => {
+      productsModel.findOne({ sku: value }, (err, product) => {
+        if (err) {
+          throw err;
+        }
+        resolve(product);
+      });
+    });
+  }
   findAll() {
     return new Promise(function(resolve, reject) {
       productsModel.find({}, function(err, products) {

@@ -7,7 +7,7 @@ var userSchema = userModel.schema;
 var productSchema = productModel.schema;
 
 var orderSchema = new Schema({
-  user: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   products: [productSchema]
 });
 

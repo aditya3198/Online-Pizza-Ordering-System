@@ -154,7 +154,7 @@ router.get("/menu", async function(req, res, next) {
 router.get("/placeorder", async function(req, res, next) {
   var skus = req.body.skus;
   var user = req.session.user;
-  console.log(user);
+
   if (
     user.phoneno == "" ||
     user.name == "" ||
@@ -165,7 +165,9 @@ router.get("/placeorder", async function(req, res, next) {
       "/menu?message=" + "Please complete your profile before placing an order"
     );
   }
-  var message = await user.placeOrder(skus);
+  var u = new Customer(user.email);
+  skus = ["Pizza1", "Pizza3"];
+  var message = await u.placeOrder(skus);
   res.redirect("/?message=" + message);
 });
 // router.get("/allusers", async function(req, res, next) {

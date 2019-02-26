@@ -1,7 +1,10 @@
-var orderModel = require("./schemas/order.js");
-
+var orderModel = require("./schemas/order");
+var Product = require("./Product");
 class Order {
-  constructor() {}
+  constructor(user_id = "") {
+    this.user_id = user_id;
+    this.products = [];
+  }
   findOne(key, value) {
     // var email = this.email;
     // var password = this.password;
@@ -22,6 +25,26 @@ class Order {
         }
         resolve(orders);
       });
+    });
+  }
+  async addProducts(items) {
+    for (var i = 0; i < items.length; i++) {
+      let p;
+      var product = new Product("", items[i]);
+      p = await product.findBySku(product.sku);
+      this.products.push(p);
+    }
+  }
+  addOrder() {
+    var order = new orderModel({
+      user: this.user_id,
+      products: this.products
+    });
+    order.save(err => {
+      if (err) {
+        throw err;
+      }
+      console.log("Order successfully saved.");
     });
   }
 }
