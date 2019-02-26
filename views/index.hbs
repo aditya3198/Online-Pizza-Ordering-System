@@ -1,4 +1,6 @@
-<div class="container col-lg-9" id="carousel">
+{{#if loggedIn}} <div class="container col-lg-12" id="carousel">
+{{else}} <div class="container col-lg-9" id="carousel">
+{{/if}}
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -37,7 +39,7 @@
     </div>
 
 </div>
-
+{{#if notLoggedIn}}
 <div class="container col-lg-3" id="loginform">
 
     <h1>Login</h1>
@@ -63,3 +65,4 @@
 
     <a href="/register">New around here? Sign up</a><br>
 </div>
+{{/if}}
