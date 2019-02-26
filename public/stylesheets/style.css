@@ -35,6 +35,10 @@ nav a {
   margin-top: 35px;
   padding: 10px;
 }
+#prof{
+  margin: 5px 0px 0px 50px;
+  padding: 20px;
+}
 .item {
   height: 630px;
 }
