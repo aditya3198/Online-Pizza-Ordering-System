@@ -151,7 +151,7 @@ router.get("/menu", async function(req, res, next) {
     message: message
   });
 });
-router.get("/placeorder", async function(req, res, next) {
+router.post("/placeorder", async function(req, res, next) {
   var skus = req.body.skus;
   var user = req.session.user;
 
