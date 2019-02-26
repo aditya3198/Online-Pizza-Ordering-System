@@ -40,17 +40,17 @@ router.post("/register", async function(req, res, next) {
   //check if user already exists
   var isDuplicate = await customer.checkDuplicate();
   if (isDuplicate) {
-    //Duplicate User, redirect back to registration page
     res.render("register", { title: "Register", error: "Duplicate User" });
     // res.redirect("/register?error=" + "Duplicate User");
   } else {
-    //User not duplicate so enter user details in database
+    //Duplicate User, redirect back to registration page
     customer.insertInDb();
 
     res.redirect("/");
   }
 });
 router.get("/adminregister", function(req, res, next) {
+  //User not duplicate so enter user details in database
   res.render("register", { title: "Register" });
 });
 router.post("/adminregister", async function(req, res, next) {
@@ -188,6 +188,17 @@ router.post("/placeorder", async function(req, res, next) {
   // skus = ["Pizza1", "Pizza3"];
   var message = await u.placeOrder(skus);
   res.redirect("/?message=" + message);
+});
+
+router.get("/aboutus", function(req, res, next) {
+  var message = req.query.hasOwnProperty("message") ? req.query.message : null;
+  var loggedIn = req.session.hasOwnProperty("user");
+  res.render("aboutus", {
+    title: "About Us",
+    message: message,
+    loggedIn: loggedIn,
+    notLoggedIn: !loggedIn
+  });
 });
 // router.get("/allusers", async function(req, res, next) {
 //   var user = new User();
