@@ -1,22 +1,38 @@
 <header class="w3-container w3-teal" id="reg">
   <h1>Profile</h1>
 </header>
-<div class="well">
-  <div id="myTabContent" class="tab-content">
-    <div class="tab-pane active in" id="home">
-      <form class="px-4 py-3" method="POST" class="form-horizontal">
-        <label>Name</label>
-        <input type="text" name="name" value="{{user.name}}" class="input-xlarge" id="user.name" />
-        <label>Email</label>
-        <input type="text" name="email" value="{{user.email}}" class="input-xlarge" id="user.email" />
-        <label>Phone number</label>
-        <input type="number" name="phoneno" value="{{user.phoneno}}" class="input-xlarge" id="user.phoneno" />
-        <label>Address</label>
-        <textarea name="address" rows="3" class="input-xlarge" id="user.address">{{user.address}}</textarea>
-        <div>
-          <button class="btn btn-primary">Update</button>
-        </div>
-      </form>
+
+<div>
+  <h3>Name: {{user.name}} </h3><br>
+  <h3>Email: {{user.email}} </h3><br>
+  <h3>Number: {{user.phoneno}} </h3><br>
+  <h3>Address: {{user.address}} </h3><br>
+
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#update">Change Details</button>
+  <div id="update" class="collapse">
+    <div class="well">
+      <div id="updateform" class="container">
+        <form action="/" method="POST" class="px-4 py-3">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value="{{user.name}}" class="form-control" id="user.name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" value="{{user.email}}" class="form-control" disabled id="user.email" />
+          </div>
+          <div class="form-group">
+            <label>Phone number</label>
+            <input type="number" name="phoneno" value="{{user.phoneno}}" class="form-control" id="user.phoneno" />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" rows="3" value="{{user.address}}" class="form-control"
+              id="user.address">{{user.address}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form><br>
+      </div>
     </div>
   </div>
 </div>
