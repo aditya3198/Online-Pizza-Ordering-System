@@ -4,6 +4,12 @@ var User = require("../models/User");
 var Customer = require("../models/Customer");
 
 router.get("/", function(req, res, next) {
+  if (
+    req.session.user.hasOwnProperty("isAdmin") &&
+    req.session.user.isAdmin == true
+  ) {
+    res.redirect("/admin");
+  }
   res.render("profile", {
     title: "Profile",
     loggedIn: 1,
