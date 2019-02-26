@@ -1,13 +1,11 @@
-<br />
-<br />
-<br />
-<br />
-<br />
+<br>
+<br>
+
 {{#each products}}
 <div style="border: solid 1px black;">
-    <div>{{this.name}}</div>
-    <div>{{this.description}}</div>
-    <div>{{this.category}}</div>
+    <div class="item-head">{{this.name}}</div>
+    <div class="item-des" >{{this.description}}</div>
+    <div class="item-cat">{{this.category}}</div>
     <img src="{{this.imageUrl}}" height="100" width="100" />
     {{!-- {{this}} --}}
     {{!-- {{this.name}} --}}
