@@ -13,6 +13,7 @@ router.get("/", function(req, res, next) {
   res.render("index", {
     title: "Pizzaero",
     loggedIn: loggedIn,
+    notLoggedIn: !loggedIn,
     message: message
   });
 });
@@ -94,6 +95,7 @@ router.post("/login", async function(req, res) {
       res.render("index", {
         title: "Pizzaero",
         loggedIn: 0,
+        notLoggedIn: 1,
         error: "Wrong Credentials"
       });
     } else {
@@ -113,6 +115,7 @@ router.post("/login", async function(req, res) {
       res.render("index", {
         title: "Pizzaero",
         loggedIn: 0,
+        notLoggedIn: 1,
         error: "Wrong Credentials"
       });
     } else {
@@ -144,23 +147,26 @@ router.get("/menu", async function(req, res, next) {
   res.render("menu", {
     products: products,
     loggedIn: loggedIn,
+    notLoggedIn: !loggedIn,
     message: message
   });
 });
-router.post("/placeorder", async function(req, res, next) {
+router.get("/placeorder", async function(req, res, next) {
   var skus = req.body.skus;
   var user = req.session.user;
+  console.log(user);
   if (
     user.phoneno == "" ||
     user.name == "" ||
     user.email == "" ||
     user.address == ""
-  )
+  ) {
     res.redirect(
       "/menu?message=" + "Please complete your profile before placing an order"
     );
-  await user.placeOrder(skus);
-  res.redirect("/?message=" + "Order Placed Successfully");
+  }
+  var message = await user.placeOrder(skus);
+  res.redirect("/?message=" + message);
 });
 // router.get("/allusers", async function(req, res, next) {
 //   var user = new User();
