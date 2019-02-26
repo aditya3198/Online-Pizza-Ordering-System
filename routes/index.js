@@ -144,11 +144,30 @@ router.get("/menu", async function(req, res, next) {
 
   var products = new Product();
   products = await products.findAll();
+  var cat1 = [];
+  var cat2 = [];
+  var cat3 = [];
+  var cat4 = [];
+  products.forEach(x => {
+    if (x.category === "Veg") {
+      cat1.push(x);
+    } else if (x.category === "Non Veg") {
+      cat2.push(x);
+    } else if (x.category === "Side") {
+      cat3.push(x);
+    } else {
+      cat4.push(x);
+    }
+  });
   res.render("menu", {
     products: products,
     loggedIn: loggedIn,
     notLoggedIn: !loggedIn,
-    message: message
+    message: message,
+    cat1: cat1,
+    cat2: cat2,
+    cat3: cat3,
+    cat4: cat4
   });
 });
 router.post("/placeorder", async function(req, res, next) {
