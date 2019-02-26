@@ -3,17 +3,21 @@ var router = express.Router();
 var User = require("../models/User");
 var Customer = require("../models/Customer");
 
-router.get("/", function(req, res, next) {
+router.get("/", async function(req, res, next) {
   if (
     req.session.user.hasOwnProperty("isAdmin") &&
     req.session.user.isAdmin == true
   ) {
     res.redirect("/admin");
   }
+  var customer = new Customer(req.session.user.email);
+  var orders = await customer.getOrders();
   res.render("profile", {
     title: "Profile",
     loggedIn: 1,
-    user: req.session.user
+    notLoggedIn: 0,
+    user: req.session.user,
+    orders: orders
   });
 });
 

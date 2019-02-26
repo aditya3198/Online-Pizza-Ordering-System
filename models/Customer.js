@@ -1,6 +1,7 @@
 var User = require("./User");
 var customerModel = require("./schemas/customer");
 var Order = require("./Order");
+var orderModel = require("./schemas/order");
 
 class Customer extends User {
   constructor(
@@ -95,7 +96,17 @@ class Customer extends User {
       resolve("Order placed successfully");
     });
   }
-  getOrder(item) {}
+  async getOrders() {
+    var cust = await this.findCustomerByEmail();
+    return new Promise((resolve, reject) => {
+      orderModel.find({ user: cust._id }, (err, orders) => {
+        if (err) {
+          throw err;
+        }
+        resolve(orders);
+      });
+    });
+  }
 }
 
 module.exports = Customer;
