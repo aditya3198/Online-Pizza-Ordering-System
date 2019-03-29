@@ -2,3 +2,4 @@ node_modules/
 allusers.hbs
 login.hbs
 package-lock.json
+.env
