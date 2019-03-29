@@ -25,6 +25,7 @@ class Customer extends User {
     });
     u.save(err => {
       if (err) {
+        console.log(err);
         throw err;
       }
       console.log("Customer successfully saved.");
