@@ -33,11 +33,13 @@
     <div class="container-fliud">
         <ol id="selectable">
             {{#each products}}
-            <li value="{{this.sku}}" class="ui-state-default">{{this.name}}<img src="{{this.imageUrl}}" height="60px"
-                    width="80px;"></li>
+            <li value="{{this.sku}}" class="ui-state-default">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="80px" width="80px;">
+                {{this.name}}
+            </li>
             {{/each}}
         </ol>
-        <button id="delete" type="submit" class="btn btn-warning col-lg-1" value="Delete" method="post">Delete</button>
+        <button id="delete" type="submit" class="btn btn-warning" value="Delete" method="post">Delete
+            Selected</span></button>
     </div>
-    {{orders}}
 </div>
