@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Product = require("../models/Product");
 var Order = require("../models/Order");
-
+var Admin = require("../models/Admin");
 /* GET users listing. */
 router.get("/", async function(req, res, next) {
   var message = req.query.hasOwnProperty("message") ? req.query.message : null;
