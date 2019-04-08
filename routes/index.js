@@ -173,21 +173,27 @@ router.get("/menu", async function(req, res, next) {
 router.post("/placeorder", async function(req, res, next) {
   var skus = req.body.skus;
   var user = req.session.user;
+  if (skus.constructor !== Array) skus = [skus];
 
-  if (
-    user.phoneno == "" ||
-    user.name == "" ||
-    user.email == "" ||
-    user.address == ""
-  ) {
-    res.redirect(
-      "/menu?message=" + "Please complete your profile before placing an order"
-    );
+  if (user === undefined) {
+    res.redirect("/menu?message=" + "Please login placing an order");
+  } else {
+    if (
+      user.phoneno == "" ||
+      user.name == "" ||
+      user.email == "" ||
+      user.address == ""
+    ) {
+      res.redirect(
+        "/menu?message=" +
+          "Please complete your profile before placing an order"
+      );
+    }
+    var u = new Customer(user.email);
+    // skus = ["Pizza1", "Pizza3"];
+    var message = await u.placeOrder(skus);
+    res.redirect("/?message=" + message);
   }
-  var u = new Customer(user.email);
-  // skus = ["Pizza1", "Pizza3"];
-  var message = await u.placeOrder(skus);
-  res.redirect("/?message=" + message);
 });
 
 router.get("/aboutus", function(req, res, next) {

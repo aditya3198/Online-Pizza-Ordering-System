@@ -22,7 +22,7 @@
                 <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
                 <strong>{{this.name}}</strong><br>
                 {{this.description}}<br>
-                <button class="btn btn-warning">Add to Cart <span
+                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')">Add to Cart <span
                         class="glyphicon glyphicon-shopping-cart"></span></button>
             </li>
             {{/each}}
@@ -37,8 +37,8 @@
                 <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
                 <strong>{{this.name}}</strong><br>
                 {{this.description}}<br>
-                <button class="btn btn-warning">Add to Cart <span
-                        class="glyphicon glyphicon-shopping-cart"></span></button>
+                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')" Add to Cart <span
+                    class="glyphicon glyphicon-shopping-cart"></span></button>
             </li>
             {{/each}}
         </ol>
@@ -52,12 +52,15 @@
                 <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
                 <strong>{{this.name}}</strong><br>
                 {{this.description}}<br>
-                <button class="btn btn-warning">Add to Cart <span
+                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')">Add to Cart <span
                         class="glyphicon glyphicon-shopping-cart"></span></button>
             </li>
             {{/each}}
         </ol>
     </div>
+    <form method="POST" action="/placeorder" id="orderForm">
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
     {{!-- {{#each products}}
 <div style="border: solid 1px black;">
     <div class="item-head">{{this.name}}</div>
