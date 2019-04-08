@@ -9,7 +9,8 @@
     <h3>Number: {{user.phoneno}} </h3><br>
     <h3>Address: {{user.address}} </h3><br>
   </div>
-  <button type="button" class="btn btn-primary float-right" data-toggle="collapse" data-target="#update, #def">Edit</button>
+  <button type="button" class="btn btn-primary float-right" data-toggle="collapse"
+    data-target="#update, #def">Edit</button>
   <div id="update" class="collapse">
     <div class="well">
       <div id="updateform" class="container">
@@ -20,6 +21,7 @@
           </div>
           <div class="form-group">
             <label>Email</label>
+            <input type="hidden" name="email" value="{{user.email}}" />
             <input type="email" name="email" value="{{user.email}}" class="form-control" disabled id="user.email" />
           </div>
           <div class="form-group">
