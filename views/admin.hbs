@@ -43,3 +43,23 @@
             Selected</span></button>
     </div>
 </div>
+
+<h2 style="text-align: center">All Orders</h2>
+<ul style="list-style: none;">
+    {{#each orders}}
+    <li>
+        <div>
+            User: {{this.user}}
+        </div>
+        <div>
+            Products
+            <ul style="list-style:none;">
+                {{#each this.products}}
+                {{this.name}}
+                {{/each}}
+            </ul>
+        </div>
+    </li>
+    <hr>
+    {{/each}}
+</ul>
