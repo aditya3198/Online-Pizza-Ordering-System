@@ -39,3 +39,20 @@
     </div>
   </div>
 </div>
+
+<header class="w3-container w3-teal" id="reg">
+  <h1>Orders</h1>
+</header>
+
+<ul>
+  {{#each orders}}
+  <li value="{{this._id}}" class="ui-state-default col-lg">
+    <h5>Products</h5>
+    <ul>
+      {{#each this.products}}
+      <li>{{this.sku}}: {{this.name}}</li>
+      {{/each}}
+    </ul>
+  </li>
+  {{/each}}
+</ul>
