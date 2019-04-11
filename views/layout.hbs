@@ -50,19 +50,13 @@
           <li class="active"><a href="/menu"><span class="glyphicon glyphicon glyphicon-list-alt"></span></a>
           </li>
 
-          <li class="dropdown nav-item">
+          <li class="nav-item">
             <a href="/aboutus" class="active">About Us</a>
-
-            <ul class="dropdown-menu dropdown-menu-left">
-              <li><a href="">Our Team</a></li>
-              <li><a href="">Feedback</a></li>
-              <li><a href="">Contact Us</a></li>
-            </ul>
           </li>
           {{#if loggedIn}}
-          <li class="nav-item" id="carticon">
-            <a href="#" class="glyphicon glyphicon-shopping-cart"></a>
-          </li>
+          {{!-- <li class="dropdown nav-item" id="carticon">
+            <a href="" class="glyphicon glyphicon-shopping-cart"></a>
+          </li> --}}
           <li class="nav-item" id="usericon">
             <a href="/user" class="glyphicon glyphicon-user"></a>
           </li>
