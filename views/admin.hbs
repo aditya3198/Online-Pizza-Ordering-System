@@ -31,6 +31,7 @@
     </div>
     <h2>Delete Item</h2>
     <div class="container-fliud">
+        <form action="/admin/deleteitem" method="POST">
         <ol id="selectable">
             {{#each products}}
             <li value="{{this.sku}}" class="ui-state-default">
@@ -41,6 +42,7 @@
         </ol>
         <button id="delete" type="submit" class="btn btn-warning" value="Delete" method="post">Delete
             Selected</span></button>
+            </form>
     </div>
 </div>
 
