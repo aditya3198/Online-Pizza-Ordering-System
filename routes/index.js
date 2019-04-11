@@ -151,7 +151,7 @@ router.get("/menu", async function(req, res, next) {
   products.forEach(x => {
     if (x.category === "Veg") {
       cat1.push(x);
-    } else if (x.category === "Non Veg") {
+    } else if (x.category === "Non-Veg") {
       cat2.push(x);
     } else if (x.category === "Side") {
       cat3.push(x);
