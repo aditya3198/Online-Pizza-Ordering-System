@@ -1,6 +1,11 @@
 <nav id="tabs" class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Menu</a>
-    <ul class="nav0 nav-phils navbar-justified">
+    <a class="navbar-brand" href="#">
+        <span class="whit">M</span>
+        <span class="whit">E</span>
+        <span class="whit">N</span>
+        <span class="whit">U</span>
+    </a>
+    <ul class="nav navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="#veg">Veg</a>
         </li>
@@ -11,44 +16,14 @@
             <a class="nav-link" href="#sides">Sides</a>
         </li>
     </ul>
-</nav>
+</nav><hr>
 <div id="menu" data-spy="scroll" data-target="#tabs" data-offset="0" class="col-lg-10">
-    <div id="veg" class="tabcontent">
+    <div id="veg" class="tabcontent clearfix">
         <p id="tab-title" class="px-3 py-2">Veg</p>
         <hr>
         <ol id="tablist row">
             {{#each cat1}}
-            <li value="{{this.sku}}" class="col-lg-4" id="column">
-                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
-                <strong>{{this.name}}</strong><br>
-                {{this.description}}<br>
-                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')">Add to Cart <span
-                        class="glyphicon glyphicon-shopping-cart"></span></button>
-            </li>
-            {{/each}}
-        </ol>
-    </div><br>
-    <div id="non-veg" class="tabcontent">
-        <p id="tab-title" class="px-3 py-2">Non-Veg</p>
-        <hr>
-        <ol id="tablist row">
-            {{#each cat2}}
-            <li value="{{this.sku}}" class="ui-state-default col-lg">
-                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
-                <strong>{{this.name}}</strong><br>
-                {{this.description}}<br>
-                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')" Add to Cart <span
-                    class="glyphicon glyphicon-shopping-cart"></span></button>
-            </li>
-            {{/each}}
-        </ol>
-    </div><br>
-    <div id="sides" class="tabcontent">
-        <p id="tab-title" class="px-3 py-2">Sides</p>
-        <hr>
-        <ol id="tablist row">
-            {{#each cat3}}
-            <li value="{{this.sku}}" class="ui-state-default col-lg">
+            <li class="col-lg-4 nostyle" id="column">
                 <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
                 <strong>{{this.name}}</strong><br>
                 {{this.description}}<br>
@@ -58,14 +33,38 @@
             {{/each}}
         </ol>
     </div>
-    <form method="POST" action="/placeorder" id="orderForm">
-        <input class="btn btn-success" type="submit" value="Submit">
-    </form>
-    {{!-- {{#each products}}
-<div style="border: solid 1px black;">
-    <div class="item-head">{{this.name}}</div>
-    <div class="item-des" >{{this.description}}</div>
-    <div class="item-cat">{{this.category}}</div>
-    <img src="{{this.imageUrl}}" height="100" width="100" />
-</div>
-{{/each}} --}}
+    <br><hr>
+    <div id="non-veg" class="tabcontent clearfix">
+        <p id="tab-title" class="px-3 py-2">Non-Veg</p>
+        <hr>
+        <ol id="tablist row">
+            {{#each cat2}}
+            <li class="col-lg-4 nostyle" id="column">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
+                <strong>{{this.name}}</strong><br>
+                {{this.description}}<br>
+                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')">Add to Cart <span
+                        class="glyphicon glyphicon-shopping-cart"></span></button>
+            </li>
+            {{/each}}
+        </ol>
+    </div><br><hr>
+    <div id="sides" class="tabcontent clearfix">
+        <p id="tab-title" class="px-3 py-2">Sides</p>
+        <hr>
+        <ol id="tablist row">
+            {{#each cat3}}
+            <li class="col-lg-4 nostyle" id="column">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
+                <strong>{{this.name}}</strong><br>
+                {{this.description}}<br>
+                <button class="btn btn-warning" onclick="addToCart('{{this.sku}}')">Add to Cart <span
+                        class="glyphicon glyphicon-shopping-cart"></span></button>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</div><hr>
+<form method="POST" action="/placeorder" id="orderForm">
+    <input class="btn btn-success" type="submit" value="Submit">
+</form>
