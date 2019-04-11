@@ -95,3 +95,16 @@ nav a {
 li.nostyle {
   list-style-type: none;
 }
+.placeorder{
+  margin-top: 50px;
+  text-align: center;
+  margin-left: 687px;
+}
+#ordsucc{
+  text-align: center;
+  margin-top: 200px;
+}
+#thank{
+  text-align: center;
+  margin-top: 100px;
+}
