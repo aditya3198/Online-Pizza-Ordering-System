@@ -192,7 +192,8 @@ router.post("/placeorder", async function(req, res, next) {
     var u = new Customer(user.email);
     // skus = ["Pizza1", "Pizza3"];
     var message = await u.placeOrder(skus);
-    res.redirect("/?message=" + message);
+    res.render("ord/?message=" + message);
+//     res.redirect("/?message=" + message);
   }
 });
 
