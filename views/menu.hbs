@@ -17,6 +17,7 @@
         </li>
     </ul>
 </nav><hr>
+{{#if loggedIn}}
 <div id="menu" data-spy="scroll" data-target="#tabs" data-offset="0" class="col-lg-10">
     <div id="veg" class="tabcontent clearfix">
         <p id="tab-title" class="px-3 py-2">Veg</p>
@@ -69,3 +70,47 @@
 <form method="POST" action="/placeorder" id="orderForm">
     <input class="btn btn-lg btn-success placeorder" type="submit" value="Place Order">
 </form>
+{{else}}
+<div id="menu" data-spy="scroll" data-target="#tabs" data-offset="0" class="col-lg-10">
+    <div id="veg" class="tabcontent clearfix">
+        <p id="tab-title" class="px-3 py-2">Veg</p>
+        <hr>
+        <ol id="tablist row">
+            {{#each cat1}}
+            <li class="col-lg-4 nostyle" id="column">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
+                <strong>{{this.name}}</strong><br>
+                {{this.description}}<br>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+    <br><hr>
+    <div id="non-veg" class="tabcontent clearfix">
+        <p id="tab-title" class="px-3 py-2">Non-Veg</p>
+        <hr>
+        <ol id="tablist row">
+            {{#each cat2}}
+            <li class="col-lg-4 nostyle" id="column">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
+                <strong>{{this.name}}</strong><br>
+                {{this.description}}<br>
+            </li>
+            {{/each}}
+        </ol>
+    </div><br><hr>
+    <div id="sides" class="tabcontent clearfix">
+        <p id="tab-title" class="px-3 py-2">Sides</p>
+        <hr>
+        <ol id="tablist row">
+            {{#each cat3}}
+            <li class="col-lg-4 nostyle" id="column">
+                <img src="{{this.imageUrl}}" class="image-responsive" height="100" width="100" /><br>
+                <strong>{{this.name}}</strong><br>
+                {{this.description}}<br>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</div><hr>
+{{/if}}
